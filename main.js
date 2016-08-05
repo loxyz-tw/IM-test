@@ -208,9 +208,7 @@ function createNewComment(postId, username, uid, text) {
 
 function createNewComment(postId, username, uid, text) {
   firebase.database().ref('messages').push({
-    text: text,
-    author: username,
-    uid: uid
+    message: text
   });
 }
 
