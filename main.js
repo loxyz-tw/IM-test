@@ -143,9 +143,13 @@ function createPostElement(postId, title, text, author, authorId, authorPic) {
   commentsRef.on('child_added', function(data) {
     addCommentElement(postElement, data.key, data.val().text, data.val().author);
   });
-
+/*
   commentsRef.on('child_changed', function(data) {
     setCommentValues(postElement, data.key, data.val().text, data.val().author);
+  });
+*/  
+  commentsRef.on('child_changed', function(data) {
+    setCommentValues(data.val().message);
   });
 
   commentsRef.on('child_removed', function(data) {
@@ -249,10 +253,17 @@ function addCommentElement(postElement, id, text, author) {
 /**
  * Sets the comment's values in the given postElement.
  */
+/* 
 function setCommentValues(postElement, id, text, author) {
   var comment = postElement.getElementsByClassName('comment-' + id)[0];
   comment.getElementsByClassName('comment')[0].innerText = text;
   comment.getElementsByClassName('fp-username')[0].innerText = author;
+}
+*/
+
+function setCommentValues(text) {
+  var comment = postElement.getElementsByClassName('comment-' + id)[0];
+  comment.getElementsByClassName('comment')[0].innerText = text;
 }
 
 /**
