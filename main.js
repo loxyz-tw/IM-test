@@ -196,7 +196,7 @@ function createPostElement(postId, title, text, author, authorId, authorPic) {
 /**
  * Writes a new comment for the given post.
  */
-
+/*
 function createNewComment(postId, username, uid, text) {
   firebase.database().ref('post-comments/' + postId).push({
     text: text,
@@ -204,7 +204,15 @@ function createNewComment(postId, username, uid, text) {
     uid: uid
   });
 }
+*/
 
+function createNewComment(postId, username, uid, text) {
+  firebase.database().ref('messages').push({
+    text: text,
+    author: username,
+    uid: uid
+  });
+}
 
 /**
  * Updates the starred status of the post.
