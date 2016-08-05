@@ -139,11 +139,17 @@ function createPostElement(postId, title, text, author, authorId, authorPic) {
 
   // Listen for comments.
   // [START child_event_listener_recycler]
+/*  
   var commentsRef = firebase.database().ref('post-comments/' + postId);
   commentsRef.on('child_added', function(data) {
     addCommentElement(postElement, data.key, data.val().text, data.val().author);
   });
-
+*/
+  var commentsRef = firebase.database().ref('message');
+  commentsRef.on('child_added', function(data) {
+    addCommentElement(postElement, data.key, data.val().text, data.val().author);
+  });
+  
   commentsRef.on('child_changed', function(data) {
     setCommentValues(postElement, data.key, data.val().text, data.val().author);
   });
@@ -196,6 +202,7 @@ function createPostElement(postId, title, text, author, authorId, authorPic) {
 /**
  * Writes a new comment for the given post.
  */
+/* 
 function createNewComment(postId, username, uid, text) {
   firebase.database().ref('post-comments/' + postId).push({
     text: text,
@@ -203,7 +210,12 @@ function createNewComment(postId, username, uid, text) {
     uid: uid
   });
 }
-
+*/
+function createNewComment(postId, username, uid, text) {
+  firebase.database().ref('messages').push({
+    message: text
+  });
+}
 /**
  * Updates the starred status of the post.
  */
