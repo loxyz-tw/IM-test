@@ -139,9 +139,15 @@ function createPostElement(postId, title, text, author, authorId, authorPic) {
 
   // Listen for comments.
   // [START child_event_listener_recycler]
+/*  
   var commentsRef = firebase.database().ref('post-comments/' + postId);
   commentsRef.on('child_added', function(data) {
     addCommentElement(postElement, data.key, data.val().text, data.val().author);
+  });
+*/
+var commentsRef = firebase.database().ref('post-comments');
+  commentsRef.on('child_added', function(data) {
+    addCommentElement(postElement, data.key, data.val().message);
   });
 /*
   commentsRef.on('child_changed', function(data) {
@@ -239,6 +245,7 @@ function updateStarCount(postElement, nbStart) {
 /**
  * Creates a comment element and adds it to the given postElement.
  */
+/* 
 function addCommentElement(postElement, id, text, author) {
   var comment = document.createElement('div');
   comment.classList.add('comment-' + id);
@@ -249,7 +256,16 @@ function addCommentElement(postElement, id, text, author) {
   var commentsContainer = postElement.getElementsByClassName('comments-container')[0];
   commentsContainer.appendChild(comment);
 }
+*/
+function addCommentElement(postElement, id, text) {
+  var comment = document.createElement('div');
+  comment.classList.add('comment-' + id);
+  comment.innerHTML = '<span class="username"></span><span class="comment"></span>';
+  comment.getElementsByClassName('comment')[0].innerText = text;
 
+  var commentsContainer = postElement.getElementsByClassName('comments-container')[0];
+  commentsContainer.appendChild(comment);
+}
 /**
  * Sets the comment's values in the given postElement.
  */
