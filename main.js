@@ -145,7 +145,7 @@ function createPostElement(postId, title, text, author, authorId, authorPic) {
     addCommentElement(postElement, data.key, data.val().text, data.val().author);
   });
 */
-var commentsRef = firebase.database().ref('post-comments');
+var commentsRef = firebase.database().ref('messages');
   commentsRef.on('child_added', function(data) {
     addCommentElement(postElement, data.key, data.val().message);
   });
