@@ -147,7 +147,7 @@ function createPostElement(postId, title, text, author, authorId, authorPic) {
 */
 var commentsRef = firebase.database().ref('messages');
   commentsRef.on('child_added', function(data) {
-    addCommentElement(postElement, data.key, data.val().message);
+    addCommentElement(postElement, data.key, data.val().message, data.val().name);
   });
 /*
   commentsRef.on('child_changed', function(data) {
@@ -257,7 +257,7 @@ function addCommentElement(postElement, id, text, author) {
   commentsContainer.appendChild(comment);
 }
 */
-function addCommentElement(postElement, id, text) {
+function addCommentElement(postElement, id, text, username) {
   var comment = document.createElement('div');
   comment.classList.add('comment-' + id);
   comment.innerHTML = '<span class="username"></span><span class="comment"></span>';
