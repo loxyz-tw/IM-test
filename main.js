@@ -259,9 +259,11 @@ function addCommentElement(postElement, id, text, author) {
 }
 */
 function addCommentElement(postElement, id, text, user) {
+  var commentsContainer = postElement.getElementsByClassName('comments-container')[0];
   if(text.includes("images")) {
-    var img = postElement.createElement("img");
+    var img = document.createElement("img");
     img.src = text;
+    commentsContainer.appendChild(img);
     console.log("xxxxxxxxxxxx");
   } else {
     var comment = document.createElement('div');
@@ -269,8 +271,7 @@ function addCommentElement(postElement, id, text, user) {
     comment.innerHTML = '<span class="username"></span><span class="comment"></span>';
     comment.getElementsByClassName('comment')[0].innerText = text;
     comment.getElementsByClassName('username')[0].innerText = user || 'Anonymous';
-  
-    var commentsContainer = postElement.getElementsByClassName('comments-container')[0];
+
     commentsContainer.appendChild(comment);
     console.log("222222222");
   }
