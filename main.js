@@ -282,9 +282,11 @@ function setCommentValues(postElement, id, text, author) {
   if(text.includes("images")) {
     var img = postElement.createElement("img");
     img.src = text;
+    console.log("======");
   } else {
     var comment = postElement.getElementsByClassName('comment-' + id)[0];
     comment.getElementsByClassName('comment')[0].innerText = text;
+    console.log("-------");
   }
 }
 
