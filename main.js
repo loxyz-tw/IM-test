@@ -156,6 +156,7 @@ var commentsRef = firebase.database().ref('messages');
 */  
   commentsRef.on('child_changed', function(data) {
     setCommentValues(postElement, data.key, data.val().message, data.val().name);
+    coonsole.log("000000");
   });
 
   commentsRef.on('child_removed', function(data) {
