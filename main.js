@@ -279,8 +279,13 @@ function setCommentValues(postElement, id, text, author) {
 */
 
 function setCommentValues(postElement, id, text, author) {
-  var comment = postElement.getElementsByClassName('comment-' + id)[0];
-  comment.getElementsByClassName('comment')[0].innerText = text;
+  if(text.includes("images")) {
+    var img = postElement.createElement("img");
+    img.src = text;
+  } else {
+    var comment = postElement.getElementsByClassName('comment-' + id)[0];
+    comment.getElementsByClassName('comment')[0].innerText = text;
+  }
 }
 
 /**
