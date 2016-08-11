@@ -155,7 +155,7 @@ var commentsRef = firebase.database().ref('messages');
   });
 */  
   commentsRef.on('child_changed', function(data) {
-    setCommentValues(data.val().message);
+    setCommentValues(postElement, data.key, data.val().message, data.val().name);
   });
 
   commentsRef.on('child_removed', function(data) {
