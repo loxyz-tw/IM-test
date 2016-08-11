@@ -259,14 +259,20 @@ function addCommentElement(postElement, id, text, author) {
 }
 */
 function addCommentElement(postElement, id, text, user) {
-  var comment = document.createElement('div');
-  comment.classList.add('comment-' + id);
-  comment.innerHTML = '<span class="username"></span><span class="comment"></span>';
-  comment.getElementsByClassName('comment')[0].innerText = text;
-  comment.getElementsByClassName('username')[0].innerText = user || 'Anonymous';
-
-  var commentsContainer = postElement.getElementsByClassName('comments-container')[0];
-  commentsContainer.appendChild(comment);
+  if(text.includes("images")) {
+    var img = document.createElement("img");
+    img.src = text;
+    console.log("xxxxxxxxxxxx");
+  } else {
+    var comment = document.createElement('div');
+    comment.classList.add('comment-' + id);
+    comment.innerHTML = '<span class="username"></span><span class="comment"></span>';
+    comment.getElementsByClassName('comment')[0].innerText = text;
+    comment.getElementsByClassName('username')[0].innerText = user || 'Anonymous';
+  
+    var commentsContainer = postElement.getElementsByClassName('comments-container')[0];
+    commentsContainer.appendChild(comment);
+  }
 }
 /**
  * Sets the comment's values in the given postElement.
