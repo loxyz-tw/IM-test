@@ -260,7 +260,7 @@ function addCommentElement(postElement, id, text, author) {
 */
 function addCommentElement(postElement, id, text, user) {
   if(text.includes("images")) {
-    var img = document.createElement("img");
+    var img = postElement.createElement("img");
     img.src = text;
     console.log("xxxxxxxxxxxx");
   } else {
