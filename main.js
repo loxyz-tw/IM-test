@@ -272,6 +272,7 @@ function addCommentElement(postElement, id, text, user) {
   
     var commentsContainer = postElement.getElementsByClassName('comments-container')[0];
     commentsContainer.appendChild(comment);
+    console.log("222222222");
   }
 }
 /**
