@@ -156,7 +156,6 @@ var commentsRef = firebase.database().ref('messages');
 */  
   commentsRef.on('child_changed', function(data) {
     setCommentValues(postElement, data.key, data.val().message, data.val().name);
-    coonsole.log("000000");
   });
 
   commentsRef.on('child_removed', function(data) {
@@ -264,7 +263,6 @@ function addCommentElement(postElement, id, text, user) {
     var img = document.createElement("img");
     img.src = text;
     commentsContainer.appendChild(img);
-    console.log("xxxxxxxxxxxx");
   } else {
     var comment = document.createElement('div');
     comment.classList.add('comment-' + id);
@@ -273,7 +271,6 @@ function addCommentElement(postElement, id, text, user) {
     comment.getElementsByClassName('username')[0].innerText = user || 'Anonymous';
 
     commentsContainer.appendChild(comment);
-    console.log("222222222");
   }
 }
 /**
@@ -291,11 +288,9 @@ function setCommentValues(postElement, id, text, author) {
   if(text.includes("images")) {
     var img = postElement.createElement("img");
     img.src = text;
-    console.log("======");
   } else {
     var comment = postElement.getElementsByClassName('comment-' + id)[0];
     comment.getElementsByClassName('comment')[0].innerText = text;
-    console.log("-------");
   }
 }
 
