@@ -278,7 +278,7 @@ function setCommentValues(postElement, id, text, author) {
 }
 */
 
-function setCommentValues(text) {
+function setCommentValues(postElement, id, text, author) {
   var comment = postElement.getElementsByClassName('comment-' + id)[0];
   comment.getElementsByClassName('comment')[0].innerText = text;
 }
